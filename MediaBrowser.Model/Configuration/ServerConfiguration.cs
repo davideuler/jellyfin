@@ -26,7 +26,9 @@ namespace MediaBrowser.Model.Configuration
                 },
                 new MetadataOptions()
                 {
-                    ItemType = "Movie"
+                    ItemType = "Movie",
+                    DisabledMetadataFetchers = new[] { "The Open Movie Database" },
+                    DisabledImageFetchers = new[] { "The Open Movie Database" }
                 },
                 new MetadataOptions
                 {
