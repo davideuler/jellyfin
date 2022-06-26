@@ -184,6 +184,11 @@ namespace MediaBrowser.Providers.MediaInfo
 
             if (mediaInfo != null)
             {
+                if (startIndex == 0 && mediaInfo.MediaStreams.Count > 0)
+                {
+                    startIndex = mediaInfo.MediaStreams[0].Index;
+                }
+
                 foreach (var mediaStream in mediaInfo.MediaStreams)
                 {
                     mediaStream.Index = startIndex++;
@@ -228,6 +233,12 @@ namespace MediaBrowser.Providers.MediaInfo
             else
             {
                 var currentMediaStreams = video.GetMediaStreams();
+
+                if (startIndex == 0 && currentMediaStreams.Count > 0)
+                {
+                    startIndex = currentMediaStreams[0].Index;
+                }
+
                 foreach (var mediaStream in currentMediaStreams)
                 {
                     if (!mediaStream.IsExternal)
